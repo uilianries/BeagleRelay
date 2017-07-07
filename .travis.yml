@@ -18,10 +18,10 @@ osx: &osx
    os: osx
    language: generic
 matrix:
-   include:      
+   include:
 
       - <<: *linux
-        env: CONAN_GCC_VERSIONS=5.4 CONAN_DOCKER_IMAGE=lasote/conangcc54
+        env: CONAN_GCC_VERSIONS=5.4 CONAN_DOCKER_IMAGE=lasote/conangcc54 CONAN_ARCHS=x86_64
 
 install:
   - chmod +x .travis/install.sh
