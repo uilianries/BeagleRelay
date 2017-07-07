@@ -6,11 +6,12 @@ class BeaglerelayConan(ConanFile):
     version = "0.1.0"
     license = "MIT"
     url = "https://github.com/uilianries/BeagleRelay"
-    description = "Realy manager for BeagleBoneBlack"
+    description = "Relay manager for BeagleBoneBlack"
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
     exports_sources = "src/*", "CMakeLists.txt"
-    requires = "BeagleBoneBlackGPIO/0.2.0@uilianries/stable"
+    requires = "BeagleBoneBlackGPIO/0.2.0@uilianries/stable", "Poco/1.7.8p3@pocoproject/stable"
+    default_options = "BeagleBoneBlackGPIO:shared=True", "Poco:shared=True"
 
     def build(self):
         cmake = CMake(self)
@@ -18,4 +19,4 @@ class BeaglerelayConan(ConanFile):
         cmake.build()
 
     def package(self):
-        self.copy("*", dst="bin", src="bin")
+        self.copy("beagle-relay", dst="bin", src="bin")

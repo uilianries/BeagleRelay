@@ -7,4 +7,4 @@ conan_basic_setup()
 enable_testing()
 add_test(NAME test-all
          WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/bin
-         COMMAND beagle-relay)
+         COMMAND beagle-relay --daemon)
