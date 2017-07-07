@@ -1,0 +1,32 @@
+
+env:
+   global:
+     - CONAN_REFERENCE: "BeagleRelay/0.1.0"
+     - CONAN_USERNAME: "uilianries"
+     - CONAN_LOGIN_USERNAME: "uilianries"
+     - CONAN_CHANNEL: "ci"
+     - CONAN_UPLOAD: "https://api.bintray.com/conan/uilianries/conan"
+
+linux: &linux
+   os: linux
+   sudo: required
+   language: python
+   python: "3.6"
+   services:
+     - docker
+osx: &osx
+   os: osx
+   language: generic
+matrix:
+   include:      
+
+      - <<: *linux
+        env: CONAN_GCC_VERSIONS=5.4 CONAN_DOCKER_IMAGE=lasote/conangcc54
+
+install:
+  - chmod +x .travis/install.sh
+  - ./.travis/install.sh
+
+script:
+  - chmod +x .travis/run.sh
+  - ./.travis/run.sh

@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+*.pyc
+
+test_package/build
